@@ -37,6 +37,13 @@ def selection_sort(number_array):
         :param number_array: (list,int), list with numeric array
         :return: (list, int), sorted numeric array
     """
+    for i in range(len(number_array)):
+        min_idx = i
+        for num_i in range(i + 1, len(number_array)):
+            if number_array[min_idx] > number_array[num_i]:
+                min_idx = num_i
+        number_array[i], number_array[min_idx] = number_array[min_idx], number_array[i]
+    return number_array
 
 
 def bubble_sort(number_array):
@@ -50,6 +57,8 @@ def bubble_sort(number_array):
 def main():
     row = read_row("numbers_one.csv")
     print(row)
+    number_array = selection_sort(row)
+    print(number_array)
 
     # Ukol: Selection Sort
 
