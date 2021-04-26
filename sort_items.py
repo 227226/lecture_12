@@ -29,6 +29,20 @@ def read_rows(file_name, row_number):
     :param row_number: (int), number of selected row
     :return: (list, int),
     """
+    file_path = os.path.join(cwd_path, file_name)
+    with open(file_path, "r") as numbers_file:
+        reader = csv.reader(numbers_file, delimiter=",")
+        row_list = []
+        for row in reader:
+            row_list.append(row)
+
+    row = row_list[row_number]
+    number_row = []
+    for element in row:
+        element = int(element)
+        number_row.append(element)
+    return number_row
+
 
 
 def selection_sort(number_array, direction="ascending"):
@@ -72,6 +86,9 @@ def main():
     print(number_array)
 
     # Ukol: Bubble Sort
+    row_number = random.randint(0, 2)
+    row = read_rows("numbers_two.csv", row_number)
+    print(row)
 
 
     # příklad výpisu hodnot seřazené řady
